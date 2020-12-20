@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:bike_store/model/product.dart';
 import 'package:bike_store/network/product_service.dart';
+import 'package:bike_store/ui/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:chopper/chopper.dart';
 
@@ -41,8 +43,17 @@ class _ProductsState extends State<Products> {
                   padding: const EdgeInsets.all(20.0),
                   child: Hero(
                     tag: products['data']['data'][index]['title'],
-                    child: InkWell(
-                      onTap: () {},
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetails(
+                              product: Product.fromJson(
+                                  products['data']['data'][index]),
+                            ),
+                          ),
+                        );
+                      },
                       child: Material(
                         elevation: 10.0,
                         shadowColor: Colors.red,

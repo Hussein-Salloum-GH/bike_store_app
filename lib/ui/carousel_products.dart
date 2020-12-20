@@ -13,10 +13,10 @@ class CarouselProducts extends StatelessWidget {
         boxFit: BoxFit.cover,
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 500),
+        animationDuration: Duration(milliseconds: 1000),
         indicatorBgPadding: 10.0,
         dotColor: Colors.white,
-        dotSize: 6.0,
+        dotSize: 8.0,
         dotBgColor: Colors.transparent,
         images: [
           AssetImage("assets/images/bike0.jpg"),

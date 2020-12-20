@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&type=embed -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - Simple CSS Dropdown Menu with Hover and :focus-within and Focus states</title>
+  
+  <link rel="stylesheet" href="./reset.min.css">
+
+  
+  
+<style>
+a {
+  text-decoration: none;
+}
+
+nav {
+	font-family: monospace;
+}
+
+ul {
+  background: darkorange;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+li {
+	color: #fff;
+  background: darkorange;
+	display: block;
+	float: left;
+	padding: 1rem;
+	position: relative;
+	text-decoration: none;
+  transition-duration: 0.5s;
+}
+  
+li a {
+  color: #fff;
+}
+
+li:hover,
+li:focus-within {
+	background: red;
+	cursor: pointer;
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+	background: orange;
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+
+ul li ul li {
+	clear: both;
+  width: 100%;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+  <nav role="navigation">
+  <ul>
+    <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">One</a></li>
+    <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">Two</a>
+      <ul class="dropdown">
+        <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">Sub-1</a></li>
+        <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">Sub-2</a></li>
+        <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">Sub-3</a></li>
+      </ul>
+    </li>
+    <li><a href="https://cdpn.io/una/fullembedgrid/RMmogp?animations=run&amp;type=embed#">Three</a></li>
+  </ul>
+</nav>
+  
+  
+  
+  
+
+  <script src="./iframeRefreshCSS-bb9a2ba1f03f6147732cb3cd52ac86c6b24524aa87a05ed0b726f11e46d7e277.js.download"></script>
+
+
+
+ 
+</body></html>
