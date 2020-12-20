@@ -1,8 +1,6 @@
-import 'dart:convert';
-
-import 'package:bike_store/network/product_service.dart';
+import 'package:bike_store/ui/carousel_products.dart';
+import 'package:bike_store/ui/products.dart';
 import 'package:flutter/material.dart';
-import 'package:chopper/chopper.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -12,14 +10,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ProductService productService;
-  Future<Response> productResponse;
-
   @override
   void initState() {
     super.initState();
-    productService = ProductService.instance();
-    productResponse = productService.getAllProducts();
   }
 
   @override
@@ -29,7 +22,7 @@ class _HomeState extends State<Home> {
         title: Text("Bike Store App"),
         actions: [
           IconButton(
-            icon: Icon(Icons.open_in_new),
+            icon: Icon(Icons.add),
             onPressed: () {},
           ),
           IconButton(
@@ -113,94 +106,34 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: Center(
-        child: FutureBuilder<Response>(
-          future: productResponse,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              //print(snapshot.data.bodyString);
-              final products = json.decode(snapshot.data.bodyString);
-              //print(products['data']['data']);
-
-              return ListView.builder(
-                itemCount: products['data']['data'].length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Hero(
-                      tag: products['data']['data'][index]['title'],
-                      child: InkWell(
-                        onTap: () {},
-                        child: Material(
-                          elevation: 7.0,
-                          shadowColor: Colors.green,
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 300.0,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "http://bikehub.store/Images/${products['data']['data'][index]['image']}"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              ListTile(
-                                leading: Text(
-                                  products['data']['data'][index]['gear'],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                                title: Text(
-                                  products['data']['data'][index]['title'],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                subtitle: Row(
-                                  children: [
-                                    Text(
-                                        "\$${products['data']['data'][index]['price']}")
-                                  ],
-                                ),
-                                trailing: Text(
-                                  products['data']['data'][index]['model'] !=
-                                          null
-                                      ? products['data']['data'][index]['model']
-                                      : "no year",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Text("Please try again!!");
-            }
-            return CircularProgressIndicator();
-          },
-        ),
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CarouselProducts(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(215.0),
+            child: Divider(height: 2.0),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 230.0),
+            child: Container(
+              child: Text(
+                "PRODUCTS",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 260.0),
+            child: Products(),
+          ),
+        ],
       ),
     );
   }
