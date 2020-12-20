@@ -1,5 +1,5 @@
 import 'package:bike_store/model/product.dart';
-import 'package:bike_store/ui/products.dart';
+
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -252,7 +252,6 @@ class ProductDetails extends StatelessWidget {
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
-                    //TODO: Brand create remember that
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Text(
