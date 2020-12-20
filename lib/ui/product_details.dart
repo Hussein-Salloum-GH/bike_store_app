@@ -231,7 +231,7 @@ class ProductDetails extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
                       child: Text(
-                        product.model,
+                        product.model != null ? product.model : "No Model",
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
