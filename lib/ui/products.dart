@@ -120,7 +120,13 @@ class _ProductsState extends State<Products> {
                 },
               );
             } else if (snapshot.hasError) {
-              return Text("Please try again!!");
+              return Text(
+                "No Network, Please try again!!",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.red,
+                ),
+              );
             }
             return Container(
               width: 100,
